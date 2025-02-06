@@ -19,6 +19,7 @@ class face:
 class cube:
     def __init__(self, faces):
         self.faces = faces
+    
     def draw(self):
         #orange
         pygame.draw.rect(surface, self.faces[0].cubes[0].color, pygame.Rect(self.faces[0].cubes[0].x, self.faces[0].cubes[0].y, 60, 60))
@@ -97,10 +98,71 @@ class cube:
         pygame.draw.rect(surface, self.faces[5].cubes[6].color, pygame.Rect(self.faces[5].cubes[6].x, self.faces[5].cubes[6].y, 60, 60))
         pygame.draw.rect(surface, self.faces[5].cubes[7].color, pygame.Rect(self.faces[5].cubes[7].x, self.faces[5].cubes[7].y, 60, 60))
         pygame.draw.rect(surface, self.faces[5].cubes[8].color, pygame.Rect(self.faces[5].cubes[8].x, self.faces[5].cubes[8].y, 60, 60))
+    
+    def printCubeColour(self):
+        for face in self.faces:
+            for cube in face.cubes:
+                print(cube.color)
+                break
+                
+    def moveTC(self):
+        orange = self.faces[0].cubes[0:3]
+        green = self.faces[1].cubes[0:3]
+        red = self.faces[2].cubes[0:3]
+        blue = self.faces[3].cubes[0:3]
+        for i in range(3):
+            self.faces[2].cubes[i].x, green[i].x = green[i].x, self.faces[2].cubes[i].x
+            self.faces[2].cubes[i].y, green[i].y = green[i].y, self.faces[2].cubes[i].y
+        for i in range(3):
+            self.faces[3].cubes[i].x, red[i].x = red[i].x, self.faces[3].cubes[i].x
+            self.faces[3].cubes[i].y, red[i].y = red[i].y, self.faces[3].cubes[i].y
+        for i in range(3):
+            self.faces[0].cubes[i].x, blue[i].x = blue[i].x, self.faces[0].cubes[i].x
+            self.faces[0].cubes[i].y, blue[i].y = blue[i].y, self.faces[0].cubes[i].y
         
+    def moveTA(self):    
+        orange = self.faces[0].cubes[0:3]
+        green = self.faces[1].cubes[0:3]
+        red = self.faces[2].cubes[0:3]
+        blue = self.faces[3].cubes[0:3]
         
+        for i in range(3):
+            self.faces[2].cubes[i].x, blue[i].x = blue[i].x, self.faces[2].cubes[i].x
+            self.faces[2].cubes[i].y, blue[i].y = blue[i].y, self.faces[2].cubes[i].y
+        for i in range(3):
+            self.faces[3].cubes[i].x, orange[i].x = orange[i].x, self.faces[3].cubes[i].x
+            self.faces[3].cubes[i].y, orange[i].y = orange[i].y, self.faces[3].cubes[i].y
+        for i in range(3):
+            self.faces[0].cubes[i].x, green[i].x = green[i].x, self.faces[0].cubes[i].x
+            self.faces[0].cubes[i].y, green[i].y = green[i].y, self.faces[0].cubes[i].y
+        for i in range(3):
+            self.faces[0].cubes[i].x, self.faces[2].cubes[i].x = self.faces[2].cubes[i].x, self.faces[0].cubes[i].x
+            self.faces[0].cubes[i].y, self.faces[2].cubes[i].y = self.faces[2].cubes[i].y, self.faces[0].cubes[i].y
+            self.faces[3].cubes[i].x, self.faces[1].cubes[i].x = self.faces[1].cubes[i].x, self.faces[3].cubes[i].x
+            self.faces[3].cubes[i].y, self.faces[1].cubes[i].y = self.faces[1].cubes[i].y, self.faces[3].cubes[i].y
+
+    def moveFC(self):
+        yellow = self.faces[5].cubes[6::]
+        green = self.faces[1].cubes[6::]
+        white = self.faces[4].cubes[6::]
+        blue = self.faces[3].cubes[6::]
         
- 
+        for i in range(3):
+            self.faces[5].cubes[6 + i].x, blue[i].x = blue[i].x, self.faces[5].cubes[6 + i].x
+            self.faces[5].cubes[6 + i].y, blue[i].y = blue[i].y, self.faces[5].cubes[6 + i].y
+        for i in range(3):
+            self.faces[1].cubes[6 + i].x, yellow[i].x = yellow[i].x, self.faces[1].cubes[6 + i].x
+            self.faces[1].cubes[6 + i].y, yellow[i].y = yellow[i].y, self.faces[1].cubes[6 + i].y
+        for i in range(3):
+            self.faces[4].cubes[6 + i].x, green[i].x = green[i].x, self.faces[4].cubes[6 + i].x
+            self.faces[4].cubes[6 + i].y, green[i].y = green[i].y, self.faces[4].cubes[6 + i].y
+    
+    def moveFA(self):
+        yellow = self.faces[5].cubes[6::]
+        green = self.faces[1].cubes[6::]
+        white = self.faces[4].cubes[6::]
+        blue = self.faces[3].cubes[6::]
+        
 #initializing colors
 red = (255, 0, 0)
 green = (0, 255, 0)
@@ -277,11 +339,13 @@ yellowCubes.append(m48)
 
 yellowFace = face(yellowCubes)
 faces.append(yellowFace)
-
+done = False
+running = True
 # Drawing Rectangle
-while True:
+rubiks.moveFC()
+while running:
     for event in pygame.event.get():  # Get all events
         if event.type == pygame.QUIT:  # Check if the QUIT event occurorange
-            break
+            running = False
     rubiks.draw()
-    pygame.display.flip()
+    pygame.display.update()
