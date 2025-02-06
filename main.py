@@ -163,6 +163,21 @@ class cube:
         white = self.faces[4].cubes[6::]
         blue = self.faces[3].cubes[6::]
         
+        for i in range(3):
+            self.faces[5].cubes[6 + i].x, blue[i].x = blue[i].x, self.faces[5].cubes[6 + i].x
+            self.faces[5].cubes[6 + i].y, blue[i].y = blue[i].y, self.faces[5].cubes[6 + i].y
+        for i in range(3):
+            self.faces[1].cubes[6 + i].x, yellow[i].x = yellow[i].x, self.faces[1].cubes[6 + i].x
+            self.faces[1].cubes[6 + i].y, yellow[i].y = yellow[i].y, self.faces[1].cubes[6 + i].y
+        for i in range(3):
+            self.faces[4].cubes[6 + i].x, green[i].x = green[i].x, self.faces[4].cubes[6 + i].x
+            self.faces[4].cubes[6 + i].y, green[i].y = green[i].y, self.faces[4].cubes[6 + i].y
+        for i in range(3):
+            self.faces[4].cubes[6 + i].x, self.faces[5].cubes[6 + i].x = self.faces[5].cubes[6 + i].x, self.faces[4].cubes[6 + i].x
+            self.faces[4].cubes[6 + i].y, self.faces[5].cubes[6 + i].y = self.faces[5].cubes[6 + i].y, self.faces[4].cubes[6 + i].y
+            self.faces[3].cubes[6 + i].x, self.faces[1].cubes[6 + i].x = self.faces[1].cubes[6 + i].x, self.faces[3].cubes[6 + i].x
+            self.faces[3].cubes[6 + i].y, self.faces[1].cubes[6 + i].y = self.faces[1].cubes[6 + i].y, self.faces[3].cubes[6 + i].y
+            
 #initializing colors
 red = (255, 0, 0)
 green = (0, 255, 0)
@@ -342,7 +357,8 @@ faces.append(yellowFace)
 done = False
 running = True
 # Drawing Rectangle
-rubiks.moveFC()
+rubiks.moveFA()
+#rubiks.moveFC()
 while running:
     for event in pygame.event.get():  # Get all events
         if event.type == pygame.QUIT:  # Check if the QUIT event occurorange
