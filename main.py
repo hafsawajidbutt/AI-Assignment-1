@@ -251,7 +251,86 @@ class cube:
             self.faces[3].cubes[i].x, self.faces[1].cubes[i].x = self.faces[1].cubes[i].x, self.faces[3].cubes[i].x
             self.faces[3].cubes[i].y, self.faces[1].cubes[i].y = self.faces[1].cubes[i].y, self.faces[3].cubes[i].y
     
-            
+    def moveRA(self):
+        red = [self.faces[2].cubes[2], self.faces[2].cubes[5], self.faces[2].cubes[8]]
+        yellow = [self.faces[5].cubes[2], self.faces[5].cubes[5], self.faces[5].cubes[8]]
+        orange = [self.faces[0].cubes[2], self.faces[0].cubes[5], self.faces[0].cubes[8]]
+        white = [self.faces[4].cubes[2], self.faces[4].cubes[5], self.faces[4].cubes[8]]
+        indices = [2, 5, 8]
+        
+        for i in indices:
+            self.faces[2].cubes[i].x, white[indices.index(i)].x = white[indices.index(i)].x, self.faces[2].cubes[i].x
+            self.faces[2].cubes[i].y, white[indices.index(i)].y = white[indices.index(i)].y, self.faces[2].cubes[i].y
+        for i in indices:
+            self.faces[5].cubes[i].x, red[indices.index(i)].x = red[indices.index(i)].x, self.faces[5].cubes[i].x
+            self.faces[5].cubes[i].y, red[indices.index(i)].y = red[indices.index(i)].y, self.faces[5].cubes[i].y
+        for i in indices:
+            self.faces[0].cubes[i].x, yellow[indices.index(i)].x = yellow[indices.index(i)].x, self.faces[0].cubes[i].x
+            self.faces[0].cubes[i].y, yellow[indices.index(i)].y = yellow[indices.index(i)].y, self.faces[0].cubes[i].y
+        
+        for i in indices:
+            self.faces[4].cubes[i].x, self.faces[5].cubes[i].x = self.faces[5].cubes[i].x, self.faces[4].cubes[i].x
+            self.faces[4].cubes[i].y, self.faces[5].cubes[i].y = self.faces[5].cubes[i].y, self.faces[4].cubes[i].y
+            self.faces[2].cubes[i].x, self.faces[0].cubes[i].x = self.faces[0].cubes[i].x, self.faces[2].cubes[i].x
+            self.faces[2].cubes[i].y, self.faces[0].cubes[i].y = self.faces[0].cubes[i].y, self.faces[2].cubes[i].y
+        
+    def moveRC(self):
+        red = [self.faces[2].cubes[2], self.faces[2].cubes[5], self.faces[2].cubes[8]]
+        yellow = [self.faces[5].cubes[2], self.faces[5].cubes[5], self.faces[5].cubes[8]]
+        orange = [self.faces[0].cubes[2], self.faces[0].cubes[5], self.faces[0].cubes[8]]
+        white = [self.faces[4].cubes[2], self.faces[4].cubes[5], self.faces[4].cubes[8]]
+        indices = [2, 5, 8]
+        
+        for i in indices:
+            self.faces[2].cubes[i].x, white[indices.index(i)].x = white[indices.index(i)].x, self.faces[2].cubes[i].x
+            self.faces[2].cubes[i].y, white[indices.index(i)].y = white[indices.index(i)].y, self.faces[2].cubes[i].y
+        for i in indices:
+            self.faces[5].cubes[i].x, red[indices.index(i)].x = red[indices.index(i)].x, self.faces[5].cubes[i].x
+            self.faces[5].cubes[i].y, red[indices.index(i)].y = red[indices.index(i)].y, self.faces[5].cubes[i].y
+        for i in indices:
+            self.faces[0].cubes[i].x, yellow[indices.index(i)].x = yellow[indices.index(i)].x, self.faces[0].cubes[i].x
+            self.faces[0].cubes[i].y, yellow[indices.index(i)].y = yellow[indices.index(i)].y, self.faces[0].cubes[i].y
+    
+    def moveLC(self):
+        red = [self.faces[2].cubes[0], self.faces[2].cubes[3], self.faces[2].cubes[6]]
+        yellow = [self.faces[5].cubes[0], self.faces[5].cubes[3], self.faces[5].cubes[6]]
+        orange = [self.faces[0].cubes[0], self.faces[0].cubes[3], self.faces[0].cubes[6]]
+        white = [self.faces[4].cubes[0], self.faces[4].cubes[3], self.faces[4].cubes[6]]
+        indices = [0, 3, 6]
+        
+        for i in indices:
+            self.faces[2].cubes[i].x, yellow[indices.index(i)].x = yellow[indices.index(i)].x, self.faces[2].cubes[i].x
+            self.faces[2].cubes[i].y, yellow[indices.index(i)].y = yellow[indices.index(i)].y, self.faces[2].cubes[i].y
+        for i in indices:
+            self.faces[5].cubes[i].x, orange[indices.index(i)].x = orange[indices.index(i)].x, self.faces[5].cubes[i].x
+            self.faces[5].cubes[i].y, orange[indices.index(i)].y = orange[indices.index(i)].y, self.faces[5].cubes[i].y
+        for i in indices:
+            self.faces[0].cubes[i].x, white[indices.index(i)].x = white[indices.index(i)].x, self.faces[0].cubes[i].x
+            self.faces[0].cubes[i].y, white[indices.index(i)].y = white[indices.index(i)].y, self.faces[0].cubes[i].y
+        
+        for i in indices:
+            self.faces[4].cubes[i].x, self.faces[5].cubes[i].x = self.faces[5].cubes[i].x, self.faces[4].cubes[i].x
+            self.faces[4].cubes[i].y, self.faces[5].cubes[i].y = self.faces[5].cubes[i].y, self.faces[4].cubes[i].y
+            self.faces[2].cubes[i].x, self.faces[0].cubes[i].x = self.faces[0].cubes[i].x, self.faces[2].cubes[i].x
+            self.faces[2].cubes[i].y, self.faces[0].cubes[i].y = self.faces[0].cubes[i].y, self.faces[2].cubes[i].y
+    
+    def moveLA(self):
+        red = [self.faces[2].cubes[0], self.faces[2].cubes[3], self.faces[2].cubes[6]]
+        yellow = [self.faces[5].cubes[0], self.faces[5].cubes[3], self.faces[5].cubes[6]]
+        orange = [self.faces[0].cubes[0], self.faces[0].cubes[3], self.faces[0].cubes[6]]
+        white = [self.faces[4].cubes[0], self.faces[4].cubes[3], self.faces[4].cubes[6]]
+        indices = [0, 3, 6]
+        
+        for i in indices:
+            self.faces[2].cubes[i].x, white[indices.index(i)].x = white[indices.index(i)].x, self.faces[2].cubes[i].x
+            self.faces[2].cubes[i].y, white[indices.index(i)].y = white[indices.index(i)].y, self.faces[2].cubes[i].y
+        for i in indices:
+            self.faces[5].cubes[i].x, red[indices.index(i)].x = red[indices.index(i)].x, self.faces[5].cubes[i].x
+            self.faces[5].cubes[i].y, red[indices.index(i)].y = red[indices.index(i)].y, self.faces[5].cubes[i].y
+        for i in indices:
+            self.faces[0].cubes[i].x, yellow[indices.index(i)].x = yellow[indices.index(i)].x, self.faces[0].cubes[i].x
+            self.faces[0].cubes[i].y, yellow[indices.index(i)].y = yellow[indices.index(i)].y, self.faces[0].cubes[i].y
+        
 #initializing colors
 red = (255, 0, 0)
 green = (0, 255, 0)
