@@ -1,5 +1,11 @@
 import pygame
 
+#initializing pygame
+pygame.init()
+ 
+#initializing surface
+surface = pygame.display.set_mode((800,600))
+
 class minicube:
     def __init__(self, x, y, color):
         self.x = x
@@ -13,12 +19,87 @@ class face:
 class cube:
     def __init__(self, faces):
         self.faces = faces
- 
-#initializing pygame
-pygame.init()
- 
-#initializing surface
-surface = pygame.display.set_mode((800,600))
+    def draw(self):
+        #orange
+        pygame.draw.rect(surface, self.faces[0].cubes[0].color, pygame.Rect(self.faces[0].cubes[0].x, self.faces[0].cubes[0].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[0].cubes[1].color, pygame.Rect(self.faces[0].cubes[1].x, self.faces[0].cubes[1].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[0].cubes[2].color, pygame.Rect(self.faces[0].cubes[2].x, self.faces[0].cubes[2].y, 60, 60))
+        
+        pygame.draw.rect(surface, self.faces[0].cubes[3].color, pygame.Rect(self.faces[0].cubes[3].x, self.faces[0].cubes[3].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[0].cubes[4].color, pygame.Rect(self.faces[0].cubes[4].x, self.faces[0].cubes[4].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[0].cubes[5].color, pygame.Rect(self.faces[0].cubes[5].x, self.faces[0].cubes[5].y, 60, 60))
+        
+        pygame.draw.rect(surface, self.faces[0].cubes[6].color, pygame.Rect(self.faces[0].cubes[6].x, self.faces[0].cubes[6].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[0].cubes[7].color, pygame.Rect(self.faces[0].cubes[7].x, self.faces[0].cubes[7].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[0].cubes[8].color, pygame.Rect(self.faces[0].cubes[8].x, self.faces[0].cubes[8].y, 60, 60))
+        
+        #green
+        pygame.draw.rect(surface, self.faces[1].cubes[0].color, pygame.Rect(self.faces[1].cubes[0].x, self.faces[1].cubes[0].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[1].cubes[1].color, pygame.Rect(self.faces[1].cubes[1].x, self.faces[1].cubes[1].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[1].cubes[2].color, pygame.Rect(self.faces[1].cubes[2].x, self.faces[1].cubes[2].y, 60, 60))
+        
+        pygame.draw.rect(surface, self.faces[1].cubes[3].color, pygame.Rect(self.faces[1].cubes[3].x, self.faces[1].cubes[3].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[1].cubes[4].color, pygame.Rect(self.faces[1].cubes[4].x, self.faces[1].cubes[4].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[1].cubes[5].color, pygame.Rect(self.faces[1].cubes[5].x, self.faces[1].cubes[5].y, 60, 60))
+        
+        pygame.draw.rect(surface, self.faces[1].cubes[6].color, pygame.Rect(self.faces[1].cubes[6].x, self.faces[1].cubes[6].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[1].cubes[7].color, pygame.Rect(self.faces[1].cubes[7].x, self.faces[1].cubes[7].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[1].cubes[8].color, pygame.Rect(self.faces[1].cubes[8].x, self.faces[1].cubes[8].y, 60, 60))
+        
+        #red
+        pygame.draw.rect(surface, self.faces[2].cubes[0].color, pygame.Rect(self.faces[2].cubes[0].x, self.faces[2].cubes[0].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[2].cubes[1].color, pygame.Rect(self.faces[2].cubes[1].x, self.faces[2].cubes[1].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[2].cubes[2].color, pygame.Rect(self.faces[2].cubes[2].x, self.faces[2].cubes[2].y, 60, 60))
+        
+        pygame.draw.rect(surface, self.faces[2].cubes[3].color, pygame.Rect(self.faces[2].cubes[3].x, self.faces[2].cubes[3].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[2].cubes[4].color, pygame.Rect(self.faces[2].cubes[4].x, self.faces[2].cubes[4].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[2].cubes[5].color, pygame.Rect(self.faces[2].cubes[5].x, self.faces[2].cubes[5].y, 60, 60))
+        
+        pygame.draw.rect(surface, self.faces[2].cubes[6].color, pygame.Rect(self.faces[2].cubes[6].x, self.faces[2].cubes[6].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[2].cubes[7].color, pygame.Rect(self.faces[2].cubes[7].x, self.faces[2].cubes[7].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[2].cubes[8].color, pygame.Rect(self.faces[2].cubes[8].x, self.faces[2].cubes[8].y, 60, 60))
+
+        #blue
+        pygame.draw.rect(surface, self.faces[3].cubes[0].color, pygame.Rect(self.faces[3].cubes[0].x, self.faces[3].cubes[0].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[3].cubes[1].color, pygame.Rect(self.faces[3].cubes[1].x, self.faces[3].cubes[1].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[3].cubes[2].color, pygame.Rect(self.faces[3].cubes[2].x, self.faces[3].cubes[2].y, 60, 60))
+        
+        pygame.draw.rect(surface, self.faces[3].cubes[3].color, pygame.Rect(self.faces[3].cubes[3].x, self.faces[3].cubes[3].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[3].cubes[4].color, pygame.Rect(self.faces[3].cubes[4].x, self.faces[3].cubes[4].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[3].cubes[5].color, pygame.Rect(self.faces[3].cubes[5].x, self.faces[3].cubes[5].y, 60, 60))
+        
+        pygame.draw.rect(surface, self.faces[3].cubes[6].color, pygame.Rect(self.faces[3].cubes[6].x, self.faces[3].cubes[6].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[3].cubes[7].color, pygame.Rect(self.faces[3].cubes[7].x, self.faces[3].cubes[7].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[3].cubes[8].color, pygame.Rect(self.faces[3].cubes[8].x, self.faces[3].cubes[8].y, 60, 60))
+        
+        #white
+        pygame.draw.rect(surface, self.faces[4].cubes[0].color, pygame.Rect(self.faces[4].cubes[0].x, self.faces[4].cubes[0].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[4].cubes[1].color, pygame.Rect(self.faces[4].cubes[1].x, self.faces[4].cubes[1].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[4].cubes[2].color, pygame.Rect(self.faces[4].cubes[2].x, self.faces[4].cubes[2].y, 60, 60))
+        
+        pygame.draw.rect(surface, self.faces[4].cubes[3].color, pygame.Rect(self.faces[4].cubes[3].x, self.faces[4].cubes[3].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[4].cubes[4].color, pygame.Rect(self.faces[4].cubes[4].x, self.faces[4].cubes[4].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[4].cubes[5].color, pygame.Rect(self.faces[4].cubes[5].x, self.faces[4].cubes[5].y, 60, 60))
+
+        pygame.draw.rect(surface, self.faces[4].cubes[6].color, pygame.Rect(self.faces[4].cubes[6].x, self.faces[4].cubes[6].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[4].cubes[7].color, pygame.Rect(self.faces[4].cubes[7].x, self.faces[4].cubes[7].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[4].cubes[8].color, pygame.Rect(self.faces[4].cubes[8].x, self.faces[4].cubes[8].y, 60, 60))
+        
+        #yellow
+        pygame.draw.rect(surface, self.faces[5].cubes[0].color, pygame.Rect(self.faces[5].cubes[0].x, self.faces[5].cubes[0].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[5].cubes[1].color, pygame.Rect(self.faces[5].cubes[1].x, self.faces[5].cubes[1].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[5].cubes[2].color, pygame.Rect(self.faces[5].cubes[2].x, self.faces[5].cubes[2].y, 60, 60))
+        
+        pygame.draw.rect(surface, self.faces[5].cubes[3].color, pygame.Rect(self.faces[5].cubes[3].x, self.faces[5].cubes[3].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[5].cubes[4].color, pygame.Rect(self.faces[5].cubes[4].x, self.faces[5].cubes[4].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[5].cubes[5].color, pygame.Rect(self.faces[5].cubes[5].x, self.faces[5].cubes[5].y, 60, 60))
+        
+        pygame.draw.rect(surface, self.faces[5].cubes[6].color, pygame.Rect(self.faces[5].cubes[6].x, self.faces[5].cubes[6].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[5].cubes[7].color, pygame.Rect(self.faces[5].cubes[7].x, self.faces[5].cubes[7].y, 60, 60))
+        pygame.draw.rect(surface, self.faces[5].cubes[8].color, pygame.Rect(self.faces[5].cubes[8].x, self.faces[5].cubes[8].y, 60, 60))
+        
+        
+        
  
 #initializing colors
 red = (255, 0, 0)
@@ -202,83 +283,5 @@ while True:
     for event in pygame.event.get():  # Get all events
         if event.type == pygame.QUIT:  # Check if the QUIT event occurorange
             break
-    #orange
-    pygame.draw.rect(surface, rubiks.faces[0].cubes[0].color, pygame.Rect(rubiks.faces[0].cubes[0].x, rubiks.faces[0].cubes[0].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[0].cubes[1].color, pygame.Rect(rubiks.faces[0].cubes[1].x, rubiks.faces[0].cubes[1].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[0].cubes[2].color, pygame.Rect(rubiks.faces[0].cubes[2].x, rubiks.faces[0].cubes[2].y, 60, 60))
-    
-    pygame.draw.rect(surface, rubiks.faces[0].cubes[3].color, pygame.Rect(rubiks.faces[0].cubes[3].x, rubiks.faces[0].cubes[3].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[0].cubes[4].color, pygame.Rect(rubiks.faces[0].cubes[4].x, rubiks.faces[0].cubes[4].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[0].cubes[5].color, pygame.Rect(rubiks.faces[0].cubes[5].x, rubiks.faces[0].cubes[5].y, 60, 60))
-    
-    pygame.draw.rect(surface, rubiks.faces[0].cubes[6].color, pygame.Rect(rubiks.faces[0].cubes[6].x, rubiks.faces[0].cubes[6].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[0].cubes[7].color, pygame.Rect(rubiks.faces[0].cubes[7].x, rubiks.faces[0].cubes[7].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[0].cubes[8].color, pygame.Rect(rubiks.faces[0].cubes[8].x, rubiks.faces[0].cubes[8].y, 60, 60))
-    
-    #green
-    pygame.draw.rect(surface, rubiks.faces[1].cubes[0].color, pygame.Rect(rubiks.faces[1].cubes[0].x, rubiks.faces[1].cubes[0].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[1].cubes[1].color, pygame.Rect(rubiks.faces[1].cubes[1].x, rubiks.faces[1].cubes[1].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[1].cubes[2].color, pygame.Rect(rubiks.faces[1].cubes[2].x, rubiks.faces[1].cubes[2].y, 60, 60))
-    
-    pygame.draw.rect(surface, rubiks.faces[1].cubes[3].color, pygame.Rect(rubiks.faces[1].cubes[3].x, rubiks.faces[1].cubes[3].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[1].cubes[4].color, pygame.Rect(rubiks.faces[1].cubes[4].x, rubiks.faces[1].cubes[4].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[1].cubes[5].color, pygame.Rect(rubiks.faces[1].cubes[5].x, rubiks.faces[1].cubes[5].y, 60, 60))
-    
-    pygame.draw.rect(surface, rubiks.faces[1].cubes[6].color, pygame.Rect(rubiks.faces[1].cubes[6].x, rubiks.faces[1].cubes[6].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[1].cubes[7].color, pygame.Rect(rubiks.faces[1].cubes[7].x, rubiks.faces[1].cubes[7].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[1].cubes[8].color, pygame.Rect(rubiks.faces[1].cubes[8].x, rubiks.faces[1].cubes[8].y, 60, 60))
-    
-    #red
-    pygame.draw.rect(surface, rubiks.faces[2].cubes[0].color, pygame.Rect(rubiks.faces[2].cubes[0].x, rubiks.faces[2].cubes[0].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[2].cubes[1].color, pygame.Rect(rubiks.faces[2].cubes[1].x, rubiks.faces[2].cubes[1].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[2].cubes[2].color, pygame.Rect(rubiks.faces[2].cubes[2].x, rubiks.faces[2].cubes[2].y, 60, 60))
-    
-    pygame.draw.rect(surface, rubiks.faces[2].cubes[3].color, pygame.Rect(rubiks.faces[2].cubes[3].x, rubiks.faces[2].cubes[3].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[2].cubes[4].color, pygame.Rect(rubiks.faces[2].cubes[4].x, rubiks.faces[2].cubes[4].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[2].cubes[5].color, pygame.Rect(rubiks.faces[2].cubes[5].x, rubiks.faces[2].cubes[5].y, 60, 60))
-    
-    pygame.draw.rect(surface, rubiks.faces[2].cubes[6].color, pygame.Rect(rubiks.faces[2].cubes[6].x, rubiks.faces[2].cubes[6].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[2].cubes[7].color, pygame.Rect(rubiks.faces[2].cubes[7].x, rubiks.faces[2].cubes[7].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[2].cubes[8].color, pygame.Rect(rubiks.faces[2].cubes[8].x, rubiks.faces[2].cubes[8].y, 60, 60))
-
-    #blue
-    pygame.draw.rect(surface, rubiks.faces[3].cubes[0].color, pygame.Rect(rubiks.faces[3].cubes[0].x, rubiks.faces[3].cubes[0].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[3].cubes[1].color, pygame.Rect(rubiks.faces[3].cubes[1].x, rubiks.faces[3].cubes[1].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[3].cubes[2].color, pygame.Rect(rubiks.faces[3].cubes[2].x, rubiks.faces[3].cubes[2].y, 60, 60))
-    
-    pygame.draw.rect(surface, rubiks.faces[3].cubes[3].color, pygame.Rect(rubiks.faces[3].cubes[3].x, rubiks.faces[3].cubes[3].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[3].cubes[4].color, pygame.Rect(rubiks.faces[3].cubes[4].x, rubiks.faces[3].cubes[4].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[3].cubes[5].color, pygame.Rect(rubiks.faces[3].cubes[5].x, rubiks.faces[3].cubes[5].y, 60, 60))
-    
-    pygame.draw.rect(surface, rubiks.faces[3].cubes[6].color, pygame.Rect(rubiks.faces[3].cubes[6].x, rubiks.faces[3].cubes[6].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[3].cubes[7].color, pygame.Rect(rubiks.faces[3].cubes[7].x, rubiks.faces[3].cubes[7].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[3].cubes[8].color, pygame.Rect(rubiks.faces[3].cubes[8].x, rubiks.faces[3].cubes[8].y, 60, 60))
-    
-    #white
-    pygame.draw.rect(surface, rubiks.faces[4].cubes[0].color, pygame.Rect(rubiks.faces[4].cubes[0].x, rubiks.faces[4].cubes[0].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[4].cubes[1].color, pygame.Rect(rubiks.faces[4].cubes[1].x, rubiks.faces[4].cubes[1].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[4].cubes[2].color, pygame.Rect(rubiks.faces[4].cubes[2].x, rubiks.faces[4].cubes[2].y, 60, 60))
-    
-    pygame.draw.rect(surface, rubiks.faces[4].cubes[3].color, pygame.Rect(rubiks.faces[4].cubes[3].x, rubiks.faces[4].cubes[3].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[4].cubes[4].color, pygame.Rect(rubiks.faces[4].cubes[4].x, rubiks.faces[4].cubes[4].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[4].cubes[5].color, pygame.Rect(rubiks.faces[4].cubes[5].x, rubiks.faces[4].cubes[5].y, 60, 60))
-
-    pygame.draw.rect(surface, rubiks.faces[4].cubes[6].color, pygame.Rect(rubiks.faces[4].cubes[6].x, rubiks.faces[4].cubes[6].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[4].cubes[7].color, pygame.Rect(rubiks.faces[4].cubes[7].x, rubiks.faces[4].cubes[7].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[4].cubes[8].color, pygame.Rect(rubiks.faces[4].cubes[8].x, rubiks.faces[4].cubes[8].y, 60, 60))
-    
-    #yellow
-    pygame.draw.rect(surface, rubiks.faces[5].cubes[0].color, pygame.Rect(rubiks.faces[5].cubes[0].x, rubiks.faces[5].cubes[0].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[5].cubes[1].color, pygame.Rect(rubiks.faces[5].cubes[1].x, rubiks.faces[5].cubes[1].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[5].cubes[2].color, pygame.Rect(rubiks.faces[5].cubes[2].x, rubiks.faces[5].cubes[2].y, 60, 60))
-    
-    pygame.draw.rect(surface, rubiks.faces[5].cubes[3].color, pygame.Rect(rubiks.faces[5].cubes[3].x, rubiks.faces[5].cubes[3].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[5].cubes[4].color, pygame.Rect(rubiks.faces[5].cubes[4].x, rubiks.faces[5].cubes[4].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[5].cubes[5].color, pygame.Rect(rubiks.faces[5].cubes[5].x, rubiks.faces[5].cubes[5].y, 60, 60))
-    
-    pygame.draw.rect(surface, rubiks.faces[5].cubes[6].color, pygame.Rect(rubiks.faces[5].cubes[6].x, rubiks.faces[5].cubes[6].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[5].cubes[7].color, pygame.Rect(rubiks.faces[5].cubes[7].x, rubiks.faces[5].cubes[7].y, 60, 60))
-    pygame.draw.rect(surface, rubiks.faces[5].cubes[8].color, pygame.Rect(rubiks.faces[5].cubes[8].x, rubiks.faces[5].cubes[8].y, 60, 60))
-    
-    
+    rubiks.draw()
     pygame.display.flip()
