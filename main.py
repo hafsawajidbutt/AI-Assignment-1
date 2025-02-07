@@ -1,4 +1,5 @@
 import pygame
+import numpy as np
 
 #initializing pygame
 pygame.init()
@@ -435,6 +436,91 @@ class cube:
                 if(color == (255, 255, 0, 255)):
                     score += 1
         return score
+    def a_star(self):
+        moves = []
+        while self.heuristicScore() != 54:
+            scores = []
+            prospectiveMoves = []
+            self.moveAA()#
+            prospectiveMoves.append("AA")
+            scores.append(self.heuristicScore())
+            self.moveAC()
+            self.moveAC()#
+            prospectiveMoves.append("AC")
+            scores.append(self.heuristicScore())
+            self.moveAA()
+            self.moveBA()#
+            prospectiveMoves.append("BA")
+            scores.append(self.heuristicScore())
+            self.moveBC()
+            self.moveBC()#
+            prospectiveMoves.append("BC")
+            scores.append(self.heuristicScore())
+            self.moveBA()
+            self.moveFC()#
+            prospectiveMoves.append("FC")
+            scores.append(self.heuristicScore())
+            self.moveFA()
+            self.moveFA()#
+            prospectiveMoves.append("FA")
+            scores.append(self.heuristicScore())
+            self.moveFC()
+            self.moveLC()#
+            prospectiveMoves.append("LC")
+            scores.append(self.heuristicScore())
+            self.moveLA()
+            self.moveLA()#
+            prospectiveMoves.append("LA")
+            scores.append(self.heuristicScore())
+            self.moveLC()
+            self.moveRC()#
+            prospectiveMoves.append("RC")
+            scores.append(self.heuristicScore())
+            self.moveRA()
+            self.moveRA()#
+            prospectiveMoves.append("RA")
+            scores.append(self.heuristicScore())
+            self.moveRC()
+            self.moveTC()#
+            prospectiveMoves.append("TC")
+            scores.append(self.heuristicScore())
+            self.moveTA()
+            self.moveTA()#
+            prospectiveMoves.append("TA")
+            scores.append(self.heuristicScore())
+            self.moveTC()
+            oldScores = scores
+            scores = np.array(scores)
+            max_Score = scores.max()
+            indexMax = oldScores.index(max_Score)
+            move = prospectiveMoves[indexMax]
+            moves.append(move)
+            if (move == "TC"):
+                self.moveTC()
+            elif (move == "TA"):
+                self.moveTA()
+            elif (move == "FC"):
+                self.moveFC()
+            elif(move == "FA"):
+                self.moveFA()
+            elif(move == "BC"):
+                self.moveBC()
+            elif(move == "BA"):
+                self.moveBA()
+            elif(move == "AC"):
+                self.moveAC()
+            elif(move == "AA"):
+                self.moveAA()
+            elif(move == "RA"):
+                self.moveRA()
+            elif(move == "RC"):
+                self.moveRC()
+            elif(move == "LC"):
+                self.moveLC()
+            elif(move == "LA"):
+                self.moveLA()
+        return moves
+            
         
 #initializing colors
 red = (255, 0, 0)
