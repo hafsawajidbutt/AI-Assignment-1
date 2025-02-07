@@ -330,6 +330,39 @@ class cube:
         for i in indices:
             self.faces[0].cubes[i].x, yellow[indices.index(i)].x = yellow[indices.index(i)].x, self.faces[0].cubes[i].x
             self.faces[0].cubes[i].y, yellow[indices.index(i)].y = yellow[indices.index(i)].y, self.faces[0].cubes[i].y
+    
+    def scramble(self):
+        file = open("scramble.txt", "r")
+        movesText = file.read()
+        moves = movesText.split(" ")
+        print(moves)
+        for move in moves:
+            if (move == "TC"):
+                self.moveTC()
+            elif (move == "TA"):
+                self.moveTA()
+            elif (move == "FC"):
+                self.moveFC()
+            elif(move == "FA"):
+                self.moveFA()
+            elif(move == "BC"):
+                self.moveBC()
+            elif(move == "BA"):
+                self.moveBA()
+            elif(move == "AC"):
+                self.moveAC()
+            elif(move == "AA"):
+                self.moveAA()
+            elif(move == "RA"):
+                self.moveRA()
+            elif(move == "RC"):
+                self.moveRC()
+            elif(move == "LC"):
+                self.moveLC()
+            elif(move == "LA"):
+                self.moveLA()
+            
+                
         
 #initializing colors
 red = (255, 0, 0)
