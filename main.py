@@ -23,16 +23,43 @@ class cube:
     def draw(self):
         #orange
         pygame.draw.rect(surface, self.faces[0].cubes[0].color, pygame.Rect(self.faces[0].cubes[0].x, self.faces[0].cubes[0].y, 60, 60))
+        # print(self.faces[0].cubes[0].x)
+        # print(self.faces[0].cubes[0].y)
+        # print(surface.get_at((self.faces[0].cubes[0].x, self.faces[0].cubes[0].y)))
         pygame.draw.rect(surface, self.faces[0].cubes[1].color, pygame.Rect(self.faces[0].cubes[1].x, self.faces[0].cubes[1].y, 60, 60))
+        # print(self.faces[0].cubes[1].x)
+        # print(self.faces[0].cubes[1].y)
+        # print(surface.get_at((self.faces[0].cubes[1].x, self.faces[0].cubes[1].y)))
         pygame.draw.rect(surface, self.faces[0].cubes[2].color, pygame.Rect(self.faces[0].cubes[2].x, self.faces[0].cubes[2].y, 60, 60))
+        # print(self.faces[0].cubes[2].x)
+        # print(self.faces[0].cubes[2].y)
+        # print(surface.get_at((self.faces[0].cubes[2].x, self.faces[0].cubes[2].y)))
         
         pygame.draw.rect(surface, self.faces[0].cubes[3].color, pygame.Rect(self.faces[0].cubes[3].x, self.faces[0].cubes[3].y, 60, 60))
+        # print(self.faces[0].cubes[3].x)
+        # print(self.faces[0].cubes[3].y)
+        # print(surface.get_at((self.faces[0].cubes[3].x, self.faces[0].cubes[3].y)))
         pygame.draw.rect(surface, self.faces[0].cubes[4].color, pygame.Rect(self.faces[0].cubes[4].x, self.faces[0].cubes[4].y, 60, 60))
+        # print(self.faces[0].cubes[4].x)
+        # print(self.faces[0].cubes[4].y)
+        # print(surface.get_at((self.faces[0].cubes[4].x, self.faces[0].cubes[4].y)))
         pygame.draw.rect(surface, self.faces[0].cubes[5].color, pygame.Rect(self.faces[0].cubes[5].x, self.faces[0].cubes[5].y, 60, 60))
+        # print(self.faces[0].cubes[5].x)
+        # print(self.faces[0].cubes[5].y)
+        # print(surface.get_at((self.faces[0].cubes[5].x, self.faces[0].cubes[5].y)))
         
         pygame.draw.rect(surface, self.faces[0].cubes[6].color, pygame.Rect(self.faces[0].cubes[6].x, self.faces[0].cubes[6].y, 60, 60))
+        # print(self.faces[0].cubes[6].x)
+        # print(self.faces[0].cubes[6].y)
+        # print(surface.get_at((self.faces[0].cubes[6].x, self.faces[0].cubes[6].y)))
         pygame.draw.rect(surface, self.faces[0].cubes[7].color, pygame.Rect(self.faces[0].cubes[7].x, self.faces[0].cubes[7].y, 60, 60))
+        # print(self.faces[0].cubes[6].x)
+        # print(self.faces[0].cubes[6].y)
+        # print(surface.get_at((self.faces[0].cubes[6].x, self.faces[0].cubes[6].y)))
         pygame.draw.rect(surface, self.faces[0].cubes[8].color, pygame.Rect(self.faces[0].cubes[8].x, self.faces[0].cubes[8].y, 60, 60))
+        # print(self.faces[0].cubes[6].x)
+        # print(self.faces[0].cubes[6].y)
+        # print(surface.get_at((self.faces[0].cubes[6].x, self.faces[0].cubes[6].y)))
         
         #green
         pygame.draw.rect(surface, self.faces[1].cubes[0].color, pygame.Rect(self.faces[1].cubes[0].x, self.faces[1].cubes[0].y, 60, 60))
@@ -361,8 +388,53 @@ class cube:
                 self.moveLC()
             elif(move == "LA"):
                 self.moveLA()
-            
-                
+    
+    def heuristicScore(self):
+        score = 0
+        #orange
+        orangeX = [30, 91, 152]
+        orangeY = [183, 244, 305]
+        for y in orangeY:
+            for x in orangeX:
+                color = surface.get_at((x,y))
+                if(color == (255, 165, 0, 255)):
+                    score += 1
+        greenX = [213, 274, 335]
+        greenY = [183, 244, 305]
+        for y in greenY:
+            for x in greenX:
+                color = surface.get_at((x, y))
+                if(color == (0, 255, 0, 255)):
+                    score += 1
+        redX = [396, 457, 518]
+        redY = [183, 244, 305]
+        for y in redY:
+            for x in redX:
+                color = surface.get_at((x, y))
+                if(color == (255, 0, 0, 255)):
+                    score += 1
+        blueX = [579, 640, 701]
+        blueY = [183, 244, 305]
+        for y in blueY:
+            for x in blueX:
+                color = surface.get_at((x, y))
+                if(color == (0, 0, 255, 255)):
+                    score += 1
+        whiteX = [213, 274, 335]
+        whiteY = [122, 61, 0]
+        for y in whiteY:
+            for x in whiteX:
+                color = surface.get_at((x, y))
+                if(color == (255, 255, 255, 255)):
+                    score += 1
+        yellowX = [213, 274, 335]
+        yellowY = [366, 427, 488]
+        for y in yellowY:
+            for x in yellowX:
+                color = surface.get_at((x, y))
+                if(color == (255, 255, 0, 255)):
+                    score += 1
+        return score
         
 #initializing colors
 red = (255, 0, 0)
@@ -392,7 +464,6 @@ m3 = minicube(152, 183, orange)
 m4 = minicube(30, 244, orange)
 m5 = minicube(91, 244, orange)
 m6 = minicube(152, 244, orange)
-
 
 m7 = minicube(30, 305, orange)
 m8 = minicube(91, 305, orange)
@@ -543,10 +614,13 @@ faces.append(yellowFace)
 done = False
 running = True
 # Drawing Rectangle
-
+rubiks.scramble()
+#rubiks.heuristicScore()
+#rubiks.draw()
 while running:
     for event in pygame.event.get():  # Get all events
         if event.type == pygame.QUIT:  # Check if the QUIT event occurorange
             running = False
     rubiks.draw()
     pygame.display.update()
+    
