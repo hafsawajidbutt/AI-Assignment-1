@@ -1,5 +1,6 @@
 import pygame
 import numpy as np
+import time
 
 #initializing pygame
 pygame.init()
@@ -390,6 +391,111 @@ class cube:
             elif(move == "LA"):
                 self.moveLA()
     
+    def getCurrentState(self):
+        state = ""
+        face1X = [30, 91, 152]
+        face1Y = [183, 244, 305]
+        for y in face1Y:
+            for x in face1X:
+                color = surface.get_at((x,y))
+                if(color == (255, 165, 0, 255)): #orange
+                    state += "O"
+                elif(color == (0, 255, 0, 255)): #green
+                    state += "G"
+                elif(color == (255, 0, 0, 255)): #red
+                    state += "R"
+                elif(color == (0, 0, 255, 255)): #blue
+                    state += "B"
+                elif(color == (255, 255, 255, 255)): #white
+                    state += "W"
+                elif(color == (255, 255, 0, 255)): #yellow
+                    state += "Y"
+        face2X = [213, 274, 335]
+        face2Y = [183, 244, 305]
+        for y in face2Y:
+            for x in face2X:
+                color = surface.get_at((x,y))
+                if(color == (255, 165, 0, 255)): #orange
+                    state += "O"
+                elif(color == (0, 255, 0, 255)): #green
+                    state += "G"
+                elif(color == (255, 0, 0, 255)): #red
+                    state += "R"
+                elif(color == (0, 0, 255, 255)): #blue
+                    state += "B"
+                elif(color == (255, 255, 255, 255)): #white
+                    state += "W"
+                elif(color == (255, 255, 0, 255)): #yellow
+                    state += "Y"
+        face3X = [396, 457, 518]
+        face3Y = [183, 244, 305]
+        for y in face3Y:
+            for x in face3X:
+                color = surface.get_at((x,y))
+                if(color == (255, 165, 0, 255)): #orange
+                    state += "O"
+                elif(color == (0, 255, 0, 255)): #green
+                    state += "G"
+                elif(color == (255, 0, 0, 255)): #red
+                    state += "R"
+                elif(color == (0, 0, 255, 255)): #blue
+                    state += "B"
+                elif(color == (255, 255, 255, 255)): #white
+                    state += "W"
+                elif(color == (255, 255, 0, 255)): #yellow
+                    state += "Y"
+        face4X = [579, 640, 701]
+        face4Y = [183, 244, 305]
+        for y in face4Y:
+            for x in face4X:
+                color = surface.get_at((x,y))
+                if(color == (255, 165, 0, 255)): #orange
+                    state += "O"
+                elif(color == (0, 255, 0, 255)): #green
+                    state += "G"
+                elif(color == (255, 0, 0, 255)): #red
+                    state += "R"
+                elif(color == (0, 0, 255, 255)): #blue
+                    state += "B"
+                elif(color == (255, 255, 255, 255)): #white
+                    state += "W"
+                elif(color == (255, 255, 0, 255)): #yellow
+                    state += "Y"
+        face5X = [213, 274, 335]
+        face5Y = [122, 61, 0]
+        for y in face5Y:
+            for x in face5X:
+                color = surface.get_at((x,y))
+                if(color == (255, 165, 0, 255)): #orange
+                    state += "O"
+                elif(color == (0, 255, 0, 255)): #green
+                    state += "G"
+                elif(color == (255, 0, 0, 255)): #red
+                    state += "R"
+                elif(color == (0, 0, 255, 255)): #blue
+                    state += "B"
+                elif(color == (255, 255, 255, 255)): #white
+                    state += "W"
+                elif(color == (255, 255, 0, 255)): #yellow
+                    state += "Y"
+        face6X = [213, 274, 335]
+        face6Y = [366, 427, 488]
+        for y in face6Y:
+            for x in face6X:
+                color = surface.get_at((x,y))
+                if(color == (255, 165, 0, 255)): #orange
+                    state += "O"
+                elif(color == (0, 255, 0, 255)): #green
+                    state += "G"
+                elif(color == (255, 0, 0, 255)): #red
+                    state += "R"
+                elif(color == (0, 0, 255, 255)): #blue
+                    state += "B"
+                elif(color == (255, 255, 255, 255)): #white
+                    state += "W"
+                elif(color == (255, 255, 0, 255)): #yellow
+                    state += "Y"
+        return state          
     def heuristicScore(self):
         score = 0
         #orange
@@ -436,90 +542,1066 @@ class cube:
                 if(color == (255, 255, 0, 255)):
                     score += 1
         return score
-    def a_star(self):
+    
+    def a_starCube(self):
         moves = []
+        statesEncountered = []
+        statesEncountered.append(self.getCurrentState())
         while self.heuristicScore() != 54:
             scores = []
-            prospectiveMoves = []
+            oldScores = []
+            prospectiveMoves = [] #finding neighbouring nodes
             self.moveAA()#
+            self.draw()
             prospectiveMoves.append("AA")
             scores.append(self.heuristicScore())
             self.moveAC()
+            self.draw()
             self.moveAC()#
+            self.draw()
             prospectiveMoves.append("AC")
             scores.append(self.heuristicScore())
             self.moveAA()
+            self.draw()
             self.moveBA()#
+            self.draw()
             prospectiveMoves.append("BA")
             scores.append(self.heuristicScore())
             self.moveBC()
+            self.draw()
             self.moveBC()#
+            self.draw()
             prospectiveMoves.append("BC")
             scores.append(self.heuristicScore())
             self.moveBA()
+            self.draw()
             self.moveFC()#
+            self.draw()
             prospectiveMoves.append("FC")
             scores.append(self.heuristicScore())
             self.moveFA()
+            self.draw()
             self.moveFA()#
+            self.draw()
             prospectiveMoves.append("FA")
             scores.append(self.heuristicScore())
             self.moveFC()
+            self.draw()
             self.moveLC()#
+            self.draw()
             prospectiveMoves.append("LC")
             scores.append(self.heuristicScore())
             self.moveLA()
+            self.draw()
             self.moveLA()#
+            self.draw()
             prospectiveMoves.append("LA")
             scores.append(self.heuristicScore())
             self.moveLC()
+            self.draw()
             self.moveRC()#
+            self.draw()
             prospectiveMoves.append("RC")
             scores.append(self.heuristicScore())
             self.moveRA()
+            self.draw()
             self.moveRA()#
+            self.draw()
             prospectiveMoves.append("RA")
             scores.append(self.heuristicScore())
             self.moveRC()
+            self.draw()
             self.moveTC()#
+            self.draw()
             prospectiveMoves.append("TC")
             scores.append(self.heuristicScore())
             self.moveTA()
+            self.draw()
             self.moveTA()#
+            self.draw()
             prospectiveMoves.append("TA")
             scores.append(self.heuristicScore())
             self.moveTC()
+            self.draw()
             oldScores = scores
             scores = np.array(scores)
             max_Score = scores.max()
             indexMax = oldScores.index(max_Score)
             move = prospectiveMoves[indexMax]
-            moves.append(move)
+            print(scores)
+            print(prospectiveMoves)
+            print(len(scores))
+            print("Max: "+ str(max_Score))
             if (move == "TC"):
                 self.moveTC()
+                print("Moved TC 1")
+                self.draw()
+                pygame.display.update()
+                time.sleep(5)
+                state = self.getCurrentState()
+                while state in statesEncountered:
+                    if (move == "TC"): #reversing move
+                        self.moveTA()
+                        print("Moved TA rev")
+                    elif (move == "TA"):
+                        self.moveTC()
+                        print("Moved TC rev")
+                    elif (move == "FC"):
+                        self.moveFA()
+                        print("Moved FA rev")
+                    elif(move == "FA"):
+                        self.moveFC()
+                        print("Moved FC rev")
+                    elif(move == "BC"):
+                        self.moveBA()
+                        print("Moved BA rev")
+                    elif(move == "BA"):
+                        self.moveBC()
+                        print("Moved BC rev")
+                    elif(move == "AC"):
+                        self.moveAA()
+                        print("Moved AA rev")
+                    elif(move == "AA"):
+                        self.moveAC()
+                        print("Moved AC rev")
+                    elif(move == "RA"):
+                        self.moveRC()
+                        print("Moved RC rev")
+                    elif(move == "RC"):
+                        self.moveRA()
+                        print("Moved RA rev")
+                    elif(move == "LC"):
+                        self.moveLA()
+                        print("Moved LA rev")
+                    elif(move == "LA"):
+                        self.moveLC()
+                        print("Moved LC rev")
+                    self.draw()
+                    pygame.display.update()
+                    oldScores.remove(max_Score)
+                    oldScores2 = oldScores
+                    oldScores = np.array(oldScores)
+                    max_Score2 = oldScores.max()
+                    oldScores = oldScores.tolist()
+                    indexMax2 = oldScores2.index(max_Score2)
+                    move = prospectiveMoves[indexMax2]
+                    if (move == "TC"): #makingMove
+                        self.moveTC()
+                        print("Moved TC 2")
+                    elif (move == "TA"):
+                        self.moveTA()
+                        print("Moved TA 2")
+                    elif (move == "FC"):
+                        self.moveFC()
+                        print("Moved FC 2")
+                    elif(move == "FA"):
+                        self.moveFA()
+                        print("Moved FA 2")
+                    elif(move == "BC"):
+                        self.moveBC()
+                        print("Moved BC 2")
+                    elif(move == "BA"):
+                        self.moveBA()
+                        print("Moved BA 2")
+                    elif(move == "AC"):
+                        self.moveAC()
+                        print("Moved AC 2")
+                    elif(move == "AA"):
+                        self.moveAA()
+                        print("Moved AA 2")
+                    elif(move == "RA"):
+                        self.moveRA()
+                        print("Moved RA 2")
+                    elif(move == "RC"):
+                        self.moveRC()
+                        print("Moved RC 2")
+                    elif(move == "LC"):
+                        self.moveLC()
+                        print("Moved LC 2")
+                    elif(move == "LA"):
+                        self.moveLA()
+                        print("Moved LA 2")
+                    self.draw()
+                    pygame.display.update()
+                    state = self.getCurrentState()
+                print("Moved TC")
+                self.draw()
+                pygame.display.update()
+                time.sleep(5)
+                statesEncountered.append(self.getCurrentState())
+                moves.append(move)
             elif (move == "TA"):
                 self.moveTA()
+                self.draw()
+                pygame.display.update()
+                time.sleep(5)
+                state = self.getCurrentState()
+                while state in statesEncountered:
+                    if (move == "TC"): #reversing move
+                        self.moveTA()
+                    elif (move == "TA"):
+                        self.moveTC()
+                    elif (move == "FC"):
+                        self.moveFA()
+                    elif(move == "FA"):
+                        self.moveFC()
+                    elif(move == "BC"):
+                        self.moveBA()
+                    elif(move == "BA"):
+                        self.moveBC()
+                    elif(move == "AC"):
+                        self.moveAA()
+                    elif(move == "AA"):
+                        self.moveAC()
+                    elif(move == "RA"):
+                        self.moveRC()
+                    elif(move == "RC"):
+                        self.moveRA()
+                    elif(move == "LC"):
+                        self.moveLA()
+                    elif(move == "LA"):
+                        self.moveLC()
+                    self.draw()
+                    pygame.display.update()
+                    oldScores.remove(max_Score)
+                    oldScores2 = oldScores
+                    oldScores = np.array(oldScores)
+                    max_Score2 = oldScores.max()
+                    oldScores = oldScores.tolist()
+                    indexMax2 = oldScores2.index(max_Score2)
+                    move = prospectiveMoves[indexMax2]
+                    if (move == "TC"): #makingMove
+                        self.moveTC()
+                    elif (move == "TA"):
+                        self.moveTA()
+                    elif (move == "FC"):
+                        self.moveFC()
+                    elif(move == "FA"):
+                        self.moveFA()
+                    elif(move == "BC"):
+                        self.moveBC()
+                    elif(move == "BA"):
+                        self.moveBA()
+                    elif(move == "AC"):
+                        self.moveAC()
+                    elif(move == "AA"):
+                        self.moveAA()
+                    elif(move == "RA"):
+                        self.moveRA()
+                    elif(move == "RC"):
+                        self.moveRC()
+                    elif(move == "LC"):
+                        self.moveLC()
+                    elif(move == "LA"):
+                        self.moveLA()
+                    self.draw()
+                    pygame.display.update()
+                    state = self.getCurrentState()
+                print("Moved")
+                self.draw()
+                pygame.display.update()
+                statesEncountered.append(self.getCurrentState())
+                moves.append(move)
             elif (move == "FC"):
                 self.moveFC()
+                self.draw()
+                pygame.display.update()
+                time.sleep(5)
+                state = self.getCurrentState()
+                while state in statesEncountered:
+                    if (move == "TC"): #reversing move
+                        self.moveTA()
+                    elif (move == "TA"):
+                        self.moveTC()
+                    elif (move == "FC"):
+                        self.moveFA()
+                    elif(move == "FA"):
+                        self.moveFC()
+                    elif(move == "BC"):
+                        self.moveBA()
+                    elif(move == "BA"):
+                        self.moveBC()
+                    elif(move == "AC"):
+                        self.moveAA()
+                    elif(move == "AA"):
+                        self.moveAC()
+                    elif(move == "RA"):
+                        self.moveRC()
+                    elif(move == "RC"):
+                        self.moveRA()
+                    elif(move == "LC"):
+                        self.moveLA()
+                    elif(move == "LA"):
+                        self.moveLC()
+                    self.draw()
+                    pygame.display.update()
+                    oldScores.remove(max_Score)
+                    oldScores2 = oldScores
+                    oldScores = np.array(oldScores)
+                    max_Score2 = oldScores.max()
+                    oldScores = oldScores.tolist()
+                    indexMax2 = oldScores2.index(max_Score2)
+                    move = prospectiveMoves[indexMax2]
+                    if (move == "TC"): #makingMove
+                        self.moveTC()
+                    elif (move == "TA"):
+                        self.moveTA()
+                    elif (move == "FC"):
+                        self.moveFC()
+                    elif(move == "FA"):
+                        self.moveFA()
+                    elif(move == "BC"):
+                        self.moveBC()
+                    elif(move == "BA"):
+                        self.moveBA()
+                    elif(move == "AC"):
+                        self.moveAC()
+                    elif(move == "AA"):
+                        self.moveAA()
+                    elif(move == "RA"):
+                        self.moveRA()
+                    elif(move == "RC"):
+                        self.moveRC()
+                    elif(move == "LC"):
+                        self.moveLC()
+                    elif(move == "LA"):
+                        self.moveLA()
+                    self.draw()
+                    pygame.display.update()
+                    state = self.getCurrentState()
+                print("Moved")
+                self.draw()
+                pygame.display.update()
+                statesEncountered.append(self.getCurrentState())
+                moves.append(move)
             elif(move == "FA"):
                 self.moveFA()
+                self.draw()
+                pygame.display.update()
+                time.sleep(5)
+                state = self.getCurrentState()
+                while state in statesEncountered:
+                    if (move == "TC"): #reversing move
+                        self.moveTA()
+                    elif (move == "TA"):
+                        self.moveTC()
+                    elif (move == "FC"):
+                        self.moveFA()
+                    elif(move == "FA"):
+                        self.moveFC()
+                    elif(move == "BC"):
+                        self.moveBA()
+                    elif(move == "BA"):
+                        self.moveBC()
+                    elif(move == "AC"):
+                        self.moveAA()
+                    elif(move == "AA"):
+                        self.moveAC()
+                    elif(move == "RA"):
+                        self.moveRC()
+                    elif(move == "RC"):
+                        self.moveRA()
+                    elif(move == "LC"):
+                        self.moveLA()
+                    elif(move == "LA"):
+                        self.moveLC()
+                    self.draw()
+                    pygame.display.update()
+                    oldScores.remove(max_Score)
+                    oldScores2 = oldScores
+                    oldScores = np.array(oldScores)
+                    max_Score2 = oldScores.max()
+                    oldScores = oldScores.tolist()
+                    indexMax2 = oldScores2.index(max_Score2)
+                    move = prospectiveMoves[indexMax2]
+                    if (move == "TC"): #makingMove
+                        self.moveTC()
+                    elif (move == "TA"):
+                        self.moveTA()
+                    elif (move == "FC"):
+                        self.moveFC()
+                    elif(move == "FA"):
+                        self.moveFA()
+                    elif(move == "BC"):
+                        self.moveBC()
+                    elif(move == "BA"):
+                        self.moveBA()
+                    elif(move == "AC"):
+                        self.moveAC()
+                    elif(move == "AA"):
+                        self.moveAA()
+                    elif(move == "RA"):
+                        self.moveRA()
+                    elif(move == "RC"):
+                        self.moveRC()
+                    elif(move == "LC"):
+                        self.moveLC()
+                    elif(move == "LA"):
+                        self.moveLA()
+                    self.draw()
+                    pygame.display.update()
+                    state = self.getCurrentState()
+                print("Moved")
+                self.draw()
+                pygame.display.update()
+                statesEncountered.append(self.getCurrentState())
+                moves.append(move)
             elif(move == "BC"):
                 self.moveBC()
+                self.draw()
+                pygame.display.update()
+                time.sleep(5)
+                state = self.getCurrentState()
+                while state in statesEncountered:
+                    if (move == "TC"): #reversing move
+                        self.moveTA()
+                    elif (move == "TA"):
+                        self.moveTC()
+                    elif (move == "FC"):
+                        self.moveFA()
+                    elif(move == "FA"):
+                        self.moveFC()
+                    elif(move == "BC"):
+                        self.moveBA()
+                    elif(move == "BA"):
+                        self.moveBC()
+                    elif(move == "AC"):
+                        self.moveAA()
+                    elif(move == "AA"):
+                        self.moveAC()
+                    elif(move == "RA"):
+                        self.moveRC()
+                    elif(move == "RC"):
+                        self.moveRA()
+                    elif(move == "LC"):
+                        self.moveLA()
+                    elif(move == "LA"):
+                        self.moveLC()
+                    self.draw()
+                    pygame.display.update()
+                    oldScores.remove(max_Score)
+                    oldScores2 = oldScores
+                    oldScores = np.array(oldScores)
+                    max_Score2 = oldScores.max()
+                    oldScores = oldScores.tolist()
+                    indexMax2 = oldScores2.index(max_Score2)
+                    move = prospectiveMoves[indexMax2]
+                    if (move == "TC"): #makingMove
+                        self.moveTC()
+                    elif (move == "TA"):
+                        self.moveTA()
+                    elif (move == "FC"):
+                        self.moveFC()
+                    elif(move == "FA"):
+                        self.moveFA()
+                    elif(move == "BC"):
+                        self.moveBC()
+                    elif(move == "BA"):
+                        self.moveBA()
+                    elif(move == "AC"):
+                        self.moveAC()
+                    elif(move == "AA"):
+                        self.moveAA()
+                    elif(move == "RA"):
+                        self.moveRA()
+                    elif(move == "RC"):
+                        self.moveRC()
+                    elif(move == "LC"):
+                        self.moveLC()
+                    elif(move == "LA"):
+                        self.moveLA()
+                    self.draw()
+                    pygame.display.update()
+                    state = self.getCurrentState()
+                print("Moved")
+                self.draw()
+                pygame.display.update()
+                statesEncountered.append(self.getCurrentState())
+                moves.append(move)
             elif(move == "BA"):
                 self.moveBA()
+                self.draw()
+                pygame.display.update()
+                time.sleep(5)
+                state = self.getCurrentState()
+                while state in statesEncountered:
+                    if (move == "TC"): #reversing move
+                        self.moveTA()
+                    elif (move == "TA"):
+                        self.moveTC()
+                    elif (move == "FC"):
+                        self.moveFA()
+                    elif(move == "FA"):
+                        self.moveFC()
+                    elif(move == "BC"):
+                        self.moveBA()
+                    elif(move == "BA"):
+                        self.moveBC()
+                    elif(move == "AC"):
+                        self.moveAA()
+                    elif(move == "AA"):
+                        self.moveAC()
+                    elif(move == "RA"):
+                        self.moveRC()
+                    elif(move == "RC"):
+                        self.moveRA()
+                    elif(move == "LC"):
+                        self.moveLA()
+                    elif(move == "LA"):
+                        self.moveLC()
+                    self.draw()
+                    pygame.display.update()
+                    print("OldScores: ", oldScores)
+                    oldScores.remove(max_Score)
+                    oldScores2 = oldScores
+                    oldScores = np.array(oldScores)
+                    max_Score2 = oldScores.max()
+                    max_Score = max_Score2
+                    oldScores = oldScores.tolist()
+                    indexMax2 = oldScores2.index(max_Score2)
+                    move = prospectiveMoves[indexMax2]
+                    if (move == "TC"): #makingMove
+                        self.moveTC()
+                    elif (move == "TA"):
+                        self.moveTA()
+                    elif (move == "FC"):
+                        self.moveFC()
+                    elif(move == "FA"):
+                        self.moveFA()
+                    elif(move == "BC"):
+                        self.moveBC()
+                    elif(move == "BA"):
+                        self.moveBA()
+                    elif(move == "AC"):
+                        self.moveAC()
+                    elif(move == "AA"):
+                        self.moveAA()
+                    elif(move == "RA"):
+                        self.moveRA()
+                    elif(move == "RC"):
+                        self.moveRC()
+                    elif(move == "LC"):
+                        self.moveLC()
+                    elif(move == "LA"):
+                        self.moveLA()
+                    self.draw()
+                    pygame.display.update()
+                    state = self.getCurrentState()
+                print("Moved")
+                self.draw()
+                pygame.display.update()
+                statesEncountered.append(self.getCurrentState())
+                moves.append(move)
             elif(move == "AC"):
                 self.moveAC()
+                self.draw()
+                pygame.display.update()
+                time.sleep(5)
+                state = self.getCurrentState()
+                while state in statesEncountered:
+                    if (move == "TC"): #reversing move
+                        self.moveTA()
+                    elif (move == "TA"):
+                        self.moveTC()
+                    elif (move == "FC"):
+                        self.moveFA()
+                    elif(move == "FA"):
+                        self.moveFC()
+                    elif(move == "BC"):
+                        self.moveBA()
+                    elif(move == "BA"):
+                        self.moveBC()
+                    elif(move == "AC"):
+                        self.moveAA()
+                    elif(move == "AA"):
+                        self.moveAC()
+                    elif(move == "RA"):
+                        self.moveRC()
+                    elif(move == "RC"):
+                        self.moveRA()
+                    elif(move == "LC"):
+                        self.moveLA()
+                    elif(move == "LA"):
+                        self.moveLC()
+                    self.draw()
+                    pygame.display.update()
+                    oldScores.remove(max_Score)
+                    oldScores2 = oldScores
+                    oldScores = np.array(oldScores)
+                    max_Score2 = oldScores.max()
+                    max_Score = max_Score2
+                    oldScores = oldScores.tolist()
+                    indexMax2 = oldScores2.index(max_Score2)
+                    move = prospectiveMoves[indexMax2]
+                    if (move == "TC"): #makingMove
+                        self.moveTC()
+                    elif (move == "TA"):
+                        self.moveTA()
+                    elif (move == "FC"):
+                        self.moveFC()
+                    elif(move == "FA"):
+                        self.moveFA()
+                    elif(move == "BC"):
+                        self.moveBC()
+                    elif(move == "BA"):
+                        self.moveBA()
+                    elif(move == "AC"):
+                        self.moveAC()
+                    elif(move == "AA"):
+                        self.moveAA()
+                    elif(move == "RA"):
+                        self.moveRA()
+                    elif(move == "RC"):
+                        self.moveRC()
+                    elif(move == "LC"):
+                        self.moveLC()
+                    elif(move == "LA"):
+                        self.moveLA()
+                    self.draw()
+                    pygame.display.update()
+                    state = self.getCurrentState()
+                print("Moved")
+                self.draw()
+                pygame.display.update()
+                statesEncountered.append(self.getCurrentState())
+                moves.append(move)
             elif(move == "AA"):
                 self.moveAA()
+                self.draw()
+                pygame.display.update()
+                time.sleep(5)
+                state = self.getCurrentState()
+                while state in statesEncountered:
+                    print(scores)
+                    if (move == "TC"): #reversing move
+                        self.moveTA()
+                    elif (move == "TA"):
+                        self.moveTC()
+                    elif (move == "FC"):
+                        self.moveFA()
+                    elif(move == "FA"):
+                        self.moveFC()
+                    elif(move == "BC"):
+                        self.moveBA()
+                    elif(move == "BA"):
+                        self.moveBC()
+                    elif(move == "AC"):
+                        self.moveAA()
+                    elif(move == "AA"):
+                        self.moveAC()
+                    elif(move == "RA"):
+                        self.moveRC()
+                    elif(move == "RC"):
+                        self.moveRA()
+                    elif(move == "LC"):
+                        self.moveLA()
+                    elif(move == "LA"):
+                        self.moveLC()
+                    self.draw()
+                    pygame.display.update()
+                    oldScores.remove(max_Score)
+                    oldScores2 = oldScores
+                    oldScores = np.array(oldScores)
+                    max_Score2 = oldScores.max()
+                    max_Score = max_Score2
+                    print(max_Score2)
+                    oldScores = oldScores.tolist()
+                    indexMax2 = oldScores2.index(max_Score2)
+                    move = prospectiveMoves[indexMax2]
+                    print(move)
+                    if (move == "TC"): #makingMove
+                        self.moveTC()
+                    elif (move == "TA"):
+                        self.moveTA()
+                    elif (move == "FC"):
+                        self.moveFC()
+                    elif(move == "FA"):
+                        self.moveFA()
+                    elif(move == "BC"):
+                        self.moveBC()
+                    elif(move == "BA"):
+                        self.moveBA()
+                    elif(move == "AC"):
+                        self.moveAC()
+                    elif(move == "AA"):
+                        self.moveAA()
+                    elif(move == "RA"):
+                        self.moveRA()
+                    elif(move == "RC"):
+                        self.moveRC()
+                    elif(move == "LC"):
+                        self.moveLC()
+                    elif(move == "LA"):
+                        self.moveLA()
+                    self.draw()
+                    pygame.display.update()
+                    state = self.getCurrentState()
+                print("Moved")
+                self.draw()
+                pygame.display.update()
+                statesEncountered.append(self.getCurrentState())
+                moves.append(move)
             elif(move == "RA"):
                 self.moveRA()
+                self.draw()
+                pygame.display.update()
+                time.sleep(5)
+                state = self.getCurrentState()
+                while state in statesEncountered:
+                    if (move == "TC"): #reversing move
+                        self.moveTA()
+                    elif (move == "TA"):
+                        self.moveTC()
+                    elif (move == "FC"):
+                        self.moveFA()
+                    elif(move == "FA"):
+                        self.moveFC()
+                    elif(move == "BC"):
+                        self.moveBA()
+                    elif(move == "BA"):
+                        self.moveBC()
+                    elif(move == "AC"):
+                        self.moveAA()
+                    elif(move == "AA"):
+                        self.moveAC()
+                    elif(move == "RA"):
+                        self.moveRC()
+                    elif(move == "RC"):
+                        self.moveRA()
+                    elif(move == "LC"):
+                        self.moveLA()
+                    elif(move == "LA"):
+                        self.moveLC()
+                    self.draw()
+                    pygame.display.update()
+                    oldScores.remove(max_Score)
+                    oldScores2 = oldScores
+                    oldScores = np.array(oldScores)
+                    max_Score2 = oldScores.max()
+                    max_Score = max_Score2
+                    oldScores = oldScores.tolist()
+                    indexMax2 = oldScores2.index(max_Score2)
+                    move = prospectiveMoves[indexMax2]
+                    if (move == "TC"): #makingMove
+                        self.moveTC()
+                    elif (move == "TA"):
+                        self.moveTA()
+                    elif (move == "FC"):
+                        self.moveFC()
+                    elif(move == "FA"):
+                        self.moveFA()
+                    elif(move == "BC"):
+                        self.moveBC()
+                    elif(move == "BA"):
+                        self.moveBA()
+                    elif(move == "AC"):
+                        self.moveAC()
+                    elif(move == "AA"):
+                        self.moveAA()
+                    elif(move == "RA"):
+                        self.moveRA()
+                    elif(move == "RC"):
+                        self.moveRC()
+                    elif(move == "LC"):
+                        self.moveLC()
+                    elif(move == "LA"):
+                        self.moveLA()
+                    self.draw()
+                    pygame.display.update()
+                    state = self.getCurrentState()
+                print("Moved")
+                self.draw()
+                pygame.display.update()
+                statesEncountered.append(self.getCurrentState())
+                moves.append(move)
             elif(move == "RC"):
                 self.moveRC()
+                self.draw()
+                pygame.display.update()
+                time.sleep(5)
+                state = self.getCurrentState()
+                while state in statesEncountered:
+                    if (move == "TC"): #reversing move
+                        self.moveTA()
+                    elif (move == "TA"):
+                        self.moveTC()
+                    elif (move == "FC"):
+                        self.moveFA()
+                    elif(move == "FA"):
+                        self.moveFC()
+                    elif(move == "BC"):
+                        self.moveBA()
+                    elif(move == "BA"):
+                        self.moveBC()
+                    elif(move == "AC"):
+                        self.moveAA()
+                    elif(move == "AA"):
+                        self.moveAC()
+                    elif(move == "RA"):
+                        self.moveRC()
+                    elif(move == "RC"):
+                        self.moveRA()
+                    elif(move == "LC"):
+                        self.moveLA()
+                    elif(move == "LA"):
+                        self.moveLC()
+                    self.draw()
+                    pygame.display.update()
+                    oldScores.remove(max_Score)
+                    oldScores2 = oldScores
+                    oldScores = np.array(oldScores)
+                    max_Score2 = oldScores.max()
+                    max_Score = max_Score2
+                    oldScores = oldScores.tolist()
+                    indexMax2 = oldScores2.index(max_Score2)
+                    move = prospectiveMoves[indexMax2]
+                    if (move == "TC"): #makingMove
+                        self.moveTC()
+                    elif (move == "TA"):
+                        self.moveTA()
+                    elif (move == "FC"):
+                        self.moveFC()
+                    elif(move == "FA"):
+                        self.moveFA()
+                    elif(move == "BC"):
+                        self.moveBC()
+                    elif(move == "BA"):
+                        self.moveBA()
+                    elif(move == "AC"):
+                        self.moveAC()
+                    elif(move == "AA"):
+                        self.moveAA()
+                    elif(move == "RA"):
+                        self.moveRA()
+                    elif(move == "RC"):
+                        self.moveRC()
+                    elif(move == "LC"):
+                        self.moveLC()
+                    elif(move == "LA"):
+                        self.moveLA()
+                    self.draw()
+                    pygame.display.update()
+                    state = self.getCurrentState()
+                print("Moved")
+                self.draw()
+                pygame.display.update()
+                statesEncountered.append(self.getCurrentState())
+                moves.append(move)
             elif(move == "LC"):
                 self.moveLC()
+                self.draw()
+                pygame.display.update()
+                time.sleep(5)
+                state = self.getCurrentState()
+                while state in statesEncountered:
+                    if (move == "TC"): #reversing move
+                        self.moveTA()
+                    elif (move == "TA"):
+                        self.moveTC()
+                    elif (move == "FC"):
+                        self.moveFA()
+                    elif(move == "FA"):
+                        self.moveFC()
+                    elif(move == "BC"):
+                        self.moveBA()
+                    elif(move == "BA"):
+                        self.moveBC()
+                    elif(move == "AC"):
+                        self.moveAA()
+                    elif(move == "AA"):
+                        self.moveAC()
+                    elif(move == "RA"):
+                        self.moveRC()
+                    elif(move == "RC"):
+                        self.moveRA()
+                    elif(move == "LC"):
+                        self.moveLA()
+                    elif(move == "LA"):
+                        self.moveLC()
+                    self.draw()
+                    pygame.display.update()
+                    oldScores.remove(max_Score)
+                    oldScores2 = oldScores
+                    oldScores = np.array(oldScores)
+                    max_Score2 = oldScores.max()
+                    max_Score = max_Score2
+                    oldScores = oldScores.tolist()
+                    indexMax2 = oldScores2.index(max_Score2)
+                    move = prospectiveMoves[indexMax2]
+                    if (move == "TC"): #makingMove
+                        self.moveTC()
+                    elif (move == "TA"):
+                        self.moveTA()
+                    elif (move == "FC"):
+                        self.moveFC()
+                    elif(move == "FA"):
+                        self.moveFA()
+                    elif(move == "BC"):
+                        self.moveBC()
+                    elif(move == "BA"):
+                        self.moveBA()
+                    elif(move == "AC"):
+                        self.moveAC()
+                    elif(move == "AA"):
+                        self.moveAA()
+                    elif(move == "RA"):
+                        self.moveRA()
+                    elif(move == "RC"):
+                        self.moveRC()
+                    elif(move == "LC"):
+                        self.moveLC()
+                    elif(move == "LA"):
+                        self.moveLA()
+                    self.draw()
+                    pygame.display.update()
+                    state = self.getCurrentState()
+                print("Moved")
+                self.draw()
+                pygame.display.update()
+                statesEncountered.append(self.getCurrentState())
+                moves.append(move)
             elif(move == "LA"):
                 self.moveLA()
+                self.draw()
+                pygame.display.update()
+                time.sleep(5)
+                state = self.getCurrentState()
+                while state in statesEncountered:
+                    if (move == "TC"): #reversing move
+                        self.moveTA()
+                    elif (move == "TA"):
+                        self.moveTC()
+                    elif (move == "FC"):
+                        self.moveFA()
+                    elif(move == "FA"):
+                        self.moveFC()
+                    elif(move == "BC"):
+                        self.moveBA()
+                    elif(move == "BA"):
+                        self.moveBC()
+                    elif(move == "AC"):
+                        self.moveAA()
+                    elif(move == "AA"):
+                        self.moveAC()
+                    elif(move == "RA"):
+                        self.moveRC()
+                    elif(move == "RC"):
+                        self.moveRA()
+                    elif(move == "LC"):
+                        self.moveLA()
+                    elif(move == "LA"):
+                        self.moveLC()
+                    self.draw()
+                    pygame.display.update()
+                    oldScores.remove(max_Score)
+                    oldScores2 = oldScores
+                    oldScores = np.array(oldScores)
+                    max_Score2 = oldScores.max()
+                    max_Score = max_Score2
+                    oldScores = oldScores.tolist()
+                    indexMax2 = oldScores2.index(max_Score2)
+                    move = prospectiveMoves[indexMax2]
+                    if (move == "TC"): #makingMove
+                        self.moveTC()
+                    elif (move == "TA"):
+                        self.moveTA()
+                    elif (move == "FC"):
+                        self.moveFC()
+                    elif(move == "FA"):
+                        self.moveFA()
+                    elif(move == "BC"):
+                        self.moveBC()
+                    elif(move == "BA"):
+                        self.moveBA()
+                    elif(move == "AC"):
+                        self.moveAC()
+                    elif(move == "AA"):
+                        self.moveAA()
+                    elif(move == "RA"):
+                        self.moveRA()
+                    elif(move == "RC"):
+                        self.moveRC()
+                    elif(move == "LC"):
+                        self.moveLC()
+                    elif(move == "LA"):
+                        self.moveLA()
+                    self.draw()
+                    pygame.display.update()
+                    state = self.getCurrentState()
+                print("Moved")
+                self.draw()
+                pygame.display.update()
+                statesEncountered.append(self.getCurrentState())
+                moves.append(move)
+            self.draw()
+            pygame.display.update()
         return moves
+    
+    # def a_starCube(self):
+    #     moves = []
+    #     statesEncountered = []
+    #     statesEncountered.append(self.getCurrentState())
+
+    #     while self.heuristicScore() != 54:
+    #         scores = []
+    #         prospectiveMoves = []
+            
+    #         # Define all possible moves
+    #         move_functions = [
+    #             ("AA", self.moveAA),
+    #             ("AC", self.moveAC),
+    #             ("BA", self.moveBA),
+    #             ("BC", self.moveBC),
+    #             ("FC", self.moveFC),
+    #             ("FA", self.moveFA),
+    #             ("LC", self.moveLC),
+    #             ("LA", self.moveLA),
+    #             ("RC", self.moveRC),
+    #             ("RA", self.moveRA),
+    #             ("TC", self.moveTC),
+    #             ("TA", self.moveTA)
+    #         ]
+
+    #         # Apply each move and calculate the heuristic score
+    #         for move_name, move_func in move_functions:
+    #             move_func()
+    #             self.draw()
+    #             pygame.display.update()
+    #             score = self.heuristicScore()
+    #             scores.append(score)
+    #             prospectiveMoves.append(move_name)
+    #             # Reverse the move to return to the original state
+    #             if move_name.endswith("C"):
+    #                 move_func()  # Reverse the move
+    #             else:
+    #                 move_func()  # Reverse the move
+
+    #         # Find the move with the maximum score
+    #         max_score = max(scores)
+    #         index_max = scores.index(max_score)
+    #         move = prospectiveMoves[index_max]
+
+    #         # Apply the selected move
+    #         move_func = dict(move_functions)[move]
+    #         move_func()
+
+    #         # Check if the new state has already been encountered
+    #         new_state = self.getCurrentState()
+    #         if new_state in statesEncountered:
+    #             # If the state has been encountered, reverse the move and try the next best move
+    #             move_func()  # Reverse the move
+    #             scores[index_max] = -1  # Mark this move as invalid
+    #             continue
+
+    #         # If the state is new, add it to the list of encountered states
+    #         statesEncountered.append(new_state)
+    #         moves.append(move)
+
+    #         # Update the display
+    #         self.draw()
+    #         pygame.display.update()
+
+    #     return moves
             
         
 #initializing colors
@@ -709,4 +1791,7 @@ while running:
             running = False
     rubiks.draw()
     pygame.display.update()
-    
+    print(rubiks.a_starCube())
+    break
+
+#OOOOOOOOOGGGGGGGGGRRRRRRRRRBBBBBBBBBWWWWWWWWWYYYYYYYYY
