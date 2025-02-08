@@ -1,6 +1,7 @@
 import pygame
 import numpy as np
 import time
+import random
 
 #initializing pygame
 pygame.init()
@@ -1204,15 +1205,21 @@ class cube:
                         self.moveLC()
                     self.draw()
                     pygame.display.update()
-                    oldScores.remove(max_Score)
-                    oldScores2 = oldScores
-                    oldScores = np.array(oldScores)
-                    max_Score2 = oldScores.max()
-                    max_Score = max_Score2
-                    print(max_Score2)
-                    oldScores = oldScores.tolist()
-                    indexMax2 = oldScores2.index(max_Score2)
-                    move = prospectiveMoves[indexMax2]
+                    if(len(oldScores) == 0):
+                        move = random.choice(prospectiveMoves)
+                        oldScores = oldScores.tolist()
+                    else:
+                        oldScores.remove(max_Score)
+                        oldScores2 = oldScores
+                        oldScores = np.array(oldScores)            
+                        max_Score2 = oldScores.max()
+                        max_Score = max_Score2
+                        print(max_Score2)
+                        print("OldScores: ", oldScores)
+                        print("OldScores2: ", oldScores2)
+                        oldScores = oldScores.tolist()
+                        indexMax2 = oldScores2.index(max_Score2)
+                        move = prospectiveMoves[indexMax2]
                     print(move)
                     if (move == "TC"): #makingMove
                         self.moveTC()
