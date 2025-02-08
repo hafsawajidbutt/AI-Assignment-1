@@ -682,6 +682,7 @@ class cube:
                     oldScores2 = oldScores
                     oldScores = np.array(oldScores)
                     max_Score2 = oldScores.max()
+                    max_Score = max_Score2
                     oldScores = oldScores.tolist()
                     indexMax2 = oldScores2.index(max_Score2)
                     move = prospectiveMoves[indexMax2]
@@ -767,6 +768,7 @@ class cube:
                     oldScores2 = oldScores
                     oldScores = np.array(oldScores)
                     max_Score2 = oldScores.max()
+                    max_Score = max_Score2
                     oldScores = oldScores.tolist()
                     indexMax2 = oldScores2.index(max_Score2)
                     move = prospectiveMoves[indexMax2]
@@ -839,6 +841,7 @@ class cube:
                     oldScores2 = oldScores
                     oldScores = np.array(oldScores)
                     max_Score2 = oldScores.max()
+                    max_Score = max_Score2
                     oldScores = oldScores.tolist()
                     indexMax2 = oldScores2.index(max_Score2)
                     move = prospectiveMoves[indexMax2]
@@ -911,6 +914,7 @@ class cube:
                     oldScores2 = oldScores
                     oldScores = np.array(oldScores)
                     max_Score2 = oldScores.max()
+                    max_Score = max_Score2
                     oldScores = oldScores.tolist()
                     indexMax2 = oldScores2.index(max_Score2)
                     move = prospectiveMoves[indexMax2]
@@ -983,6 +987,7 @@ class cube:
                     oldScores2 = oldScores
                     oldScores = np.array(oldScores)
                     max_Score2 = oldScores.max()
+                    max_Score = max_Score2
                     oldScores = oldScores.tolist()
                     indexMax2 = oldScores2.index(max_Score2)
                     move = prospectiveMoves[indexMax2]
