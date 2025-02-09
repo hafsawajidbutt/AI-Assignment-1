@@ -2725,8 +2725,8 @@ while running:
             running = False
     rubiks.draw()
     pygame.display.update()
-    #print(rubiks.a_starCube())
-    print(rubiks.bfs())
+    print(rubiks.a_starCube())
+    #print(rubiks.bfs())
     break
 
 #OOOOOOOOOGGGGGGGGGRRRRRRRRRBBBBBBBBBWWWWWWWWWYYYYYYYYY
