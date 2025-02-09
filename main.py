@@ -795,9 +795,10 @@ class cube:
                             oldScores.remove(oldScores[indexMax])
                             oldScores = np.array(oldScores)
                             max_Score2 = oldScores.max()
+                            max_Score = max_Score2
                             oldScores = oldScores.tolist()
                             indexMax2 = oldScores.index(max_Score2)
-                            move = prospectiveMoves[move]
+                            move = prospectiveMoves[indexMax2]
                         if (move == "TC"): #makingMove
                             self.moveTC()
                         elif (move == "TA"):
@@ -949,9 +950,10 @@ class cube:
                             oldScores.remove(oldScores[indexMax])
                             oldScores = np.array(oldScores)
                             max_Score2 = oldScores.max()
+                            max_Score = max_Score2
                             oldScores = oldScores.tolist()
                             indexMax2 = oldScores.index(max_Score2)
-                            move = prospectiveMoves[move]
+                            move = prospectiveMoves[indexMax2]
                         if (move == "TC"): #makingMove
                             self.moveTC()
                         elif (move == "TA"):
@@ -1090,9 +1092,10 @@ class cube:
                             oldScores.remove(oldScores[indexMax])
                             oldScores = np.array(oldScores)
                             max_Score2 = oldScores.max()
+                            max_Score = max_Score2
                             oldScores = oldScores.tolist()
                             indexMax2 = oldScores.index(max_Score2)
-                            move = prospectiveMoves[move]
+                            move = prospectiveMoves[indexMax2]
                         if (move == "TC"): #makingMove
                             self.moveTC()
                         elif (move == "TA"):
@@ -1231,9 +1234,10 @@ class cube:
                             oldScores.remove(oldScores[indexMax])
                             oldScores = np.array(oldScores)
                             max_Score2 = oldScores.max()
+                            max_Score = max_Score2
                             oldScores = oldScores.tolist()
                             indexMax2 = oldScores.index(max_Score2)
-                            move = prospectiveMoves[move]
+                            move = prospectiveMoves[indexMax2]
                         if (move == "TC"): #makingMove
                             self.moveTC()
                         elif (move == "TA"):
@@ -1372,9 +1376,10 @@ class cube:
                             oldScores.remove(oldScores[indexMax])
                             oldScores = np.array(oldScores)
                             max_Score2 = oldScores.max()
+                            max_Score = max_Score2
                             oldScores = oldScores.tolist()
                             indexMax2 = oldScores.index(max_Score2)
-                            move = prospectiveMoves[move]
+                            move = prospectiveMoves[indexMax2]
                         if (move == "TC"): #makingMove
                             self.moveTC()
                         elif (move == "TA"):
@@ -1513,9 +1518,10 @@ class cube:
                             oldScores.remove(oldScores[indexMax])
                             oldScores = np.array(oldScores)
                             max_Score2 = oldScores.max()
+                            max_Score = max_Score2
                             oldScores = oldScores.tolist()
                             indexMax2 = oldScores.index(max_Score2)
-                            move = prospectiveMoves[move]
+                            move = prospectiveMoves[indexMax2]
                         if (move == "TC"): #makingMove
                             self.moveTC()
                         elif (move == "TA"):
@@ -1655,9 +1661,10 @@ class cube:
                             oldScores.remove(oldScores[indexMax])
                             oldScores = np.array(oldScores)
                             max_Score2 = oldScores.max()
+                            max_Score = max_Score2
                             oldScores = oldScores.tolist()
                             indexMax2 = oldScores.index(max_Score2)
-                            move = prospectiveMoves[move]
+                            move = prospectiveMoves[indexMax2]
                         if (move == "TC"): #makingMove
                             self.moveTC()
                         elif (move == "TA"):
@@ -1797,6 +1804,7 @@ class cube:
                             oldScores.remove(oldScores[indexMax])
                             oldScores = np.array(oldScores)
                             max_Score2 = oldScores.max()
+                            max_Score = max_Score2
                             oldScores = oldScores.tolist()
                             indexMax2 = oldScores.index(max_Score2)
                             move = prospectiveMoves[indexMax2]
@@ -1942,9 +1950,10 @@ class cube:
                             oldScores.remove(oldScores[indexMax])
                             oldScores = np.array(oldScores)
                             max_Score2 = oldScores.max()
+                            max_Score = max_Score2
                             oldScores = oldScores.tolist()
                             indexMax2 = oldScores.index(max_Score2)
-                            move = prospectiveMoves[move]
+                            move = prospectiveMoves[indexMax2]
                         if (move == "TC"): #makingMove
                             self.moveTC()
                         elif (move == "TA"):
