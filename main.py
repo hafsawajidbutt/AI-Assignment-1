@@ -3,6 +3,7 @@ import numpy as np
 import time
 import random
 import math
+import heapq
 
 #initializing pygame
 pygame.init()
@@ -544,6 +545,13 @@ class cube:
                 if(color == (255, 255, 0, 255)):
                     score += 1
         return math.ceil(score/4)
+   
+    def heuristicScore2(self):
+        goal_state = "OOOOOOOOOGGGGGGGGGRRRRRRRRRBBBBBBBBBWWWWWWWWWYYYYYYYYY"
+        current_state = self.getCurrentState()
+        score = sum(1 for a, b in zip(current_state, goal_state) if a != b)
+        return score
+    
     def findNeighbours(self):
         scores = []
         prospectiveMoves = [] #finding neighbouring nodes
