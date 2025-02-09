@@ -4,6 +4,7 @@ import time
 import random
 import math
 import heapq
+from collections import deque
 
 #initializing pygame
 pygame.init()
@@ -2456,20 +2457,7 @@ class cube:
             self.draw()
             pygame.display.update()
         return moves
-    
-    def bfs(self):
-        # Initialize the queue with the initial state
-        queue = [(self.getCurrentState(), [])]
-        # Initialize a set to keep track of visited states
-        visited = set()
-        while queue:
-            # Dequeue the next state and move
-            state, moves = queue.pop(0)
-            if state not in visited:
-                visited.add(state)
-                # If this is the goal state, return the moves that led to it
-                if self.isGoalState(state):
-                    return moves
+
                 
     # def a_starCube(self):
     #     moves = []
@@ -2537,7 +2525,65 @@ class cube:
 
     #     return moves
             
-        
+from collections import deque
+
+def bfs(cube):
+    queue = deque()  # Queue for BFS
+    visited = set()  # Set to store visited states
+
+    queue.append((cube.copy(), []))  # Store (state, path) pairs
+    visited.add(cube.getCurrentState())
+
+    possible_moves = ["TC", "TA", "FC", "FA", "BC", "BA", "AC", "AA", "RA", "RC", "LC", "LA"]
+
+    while queue:
+        current_cube, path = queue.popleft()  # Get first element from queue
+
+        if current_cube.heuristicScore() == 54:  # Goal check
+            print("Solution found:", path)
+            return path
+
+        for move in possible_moves:
+            new_cube = current_cube.copy()
+            if hasattr(new_cube, f"move{move}"):
+                getattr(new_cube, f"move{move}")()  # Apply move
+
+                new_state = new_cube.getCurrentState()
+                if new_state not in visited:  # Avoid revisits
+                    visited.add(new_state)
+                    queue.append((new_cube, path + [move]))
+
+                    # Visualize move
+                    new_cube.draw()
+                    pygame.display.update()
+                    time.sleep(0.5)
+                    print(f"Trying move: {move}")
+
+    return None  # No solution found
+
+
+def solve_cube_with_bfs():
+    print("Starting BFS-based solving...")
+
+    solution = bfs(rubiks)
+
+    if solution:
+        print("Solution found:", solution)
+        for move in solution:
+            if hasattr(rubiks, f"move{move}"):
+                getattr(rubiks, f"move{move}")()
+                rubiks.draw()
+                pygame.display.update()
+                time.sleep(2)  # Small delay for visualization
+        print("Cube Solved!")  # Indicate completion
+    else:
+        print("No solution found.")
+
+    pygame.quit()  # Close Pygame properly
+   
+
+
+       
 #initializing colors
 red = (255, 0, 0)
 green = (0, 255, 0)
@@ -2719,14 +2765,16 @@ running = True
 rubiks.scramble()
 #rubiks.heuristicScore()
 #rubiks.draw()
+
 while running:
     for event in pygame.event.get():  # Get all events
         if event.type == pygame.QUIT:  # Check if the QUIT event occurorange
             running = False
     rubiks.draw()
     pygame.display.update()
-    print(rubiks.a_starCube())
-    #print(rubiks.bfs())
+    #print(rubiks.a_starCube())
+    time.sleep(2)  # Show scrambled cube for 2 seconds
+    solve_cube_with_bfs()
     break
 
 #OOOOOOOOOGGGGGGGGGRRRRRRRRRBBBBBBBBBWWWWWWWWWYYYYYYYYY
