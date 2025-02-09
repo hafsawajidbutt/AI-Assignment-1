@@ -111,4 +111,4 @@
 #         if apply_move(state1, move) == state2:
 #             return move
 #     return "Unknown Move"  # Or raise an exception, or handle it differently
-LA RC AC FA BC FA AA RA LA TA
+#LA RC AC FA BC FA AA RA LA TA
